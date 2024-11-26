@@ -1,0 +1,27 @@
+{
+    "agents": [
+        "DEX",
+        "SAC",
+        "DDPG",
+        "DDPGBC",
+        "CoL",
+        "AMP",
+        "AWAC",
+        "SQIL"
+    ],
+    "tasks": [
+        "NeedleReachMem-v0",
+        "GauzeRetrieveMem-v0",
+        "NeedlePickMem-v0",
+        "PegTransferMem-v0",
+        "NeedleRegraspMem-v0",
+        "BiPegTransferMem-v0",
+        "ECMReachMem-v0",
+        "MisOrientMem-v0",
+        "StaticTrackMem-v0"
+    ],
+    "mode": "eval",
+    "print_mode": "max",
+    "key_attribute": "episode_sr",
+    "config_path": "d100/s1"
+}
