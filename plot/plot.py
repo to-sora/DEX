@@ -32,6 +32,10 @@ def compute_aggregate(series, mode):
             return series.median()
         elif mode == 'mean':
             return series.mean()
+        elif mode == 'min_index':
+            return series.idxmin()
+        elif mode == 'max_index':
+            return series.idxmax()
         else:
             return 'Nil'
     except:
@@ -58,8 +62,8 @@ def main():
     if mode not in ['train', 'eval']:
         print("Mode should be either 'train' or 'eval'.")
         sys.exit(1)
-    if print_mode not in ['min', 'max', 'median', 'mean']:
-        print("Print mode should be one of 'min', 'max', 'median', or 'mean'.")
+    if print_mode not in ['min', 'max', 'median', 'mean', 'min_index', 'max_index']:
+        print("Print mode should be one of 'min', 'max', 'median', 'mean', 'min_index', or 'max_index'.")
         sys.exit(1)
     if not key_attribute:
         print("Key attribute not specified in the configuration.")
@@ -96,6 +100,9 @@ def main():
                                 aggregate_value = 'Nil'
                             else:
                                 aggregate_value = aggregate
+                    # If the mode is 'min_index' or 'max_index', ensure the index is included
+                    if print_mode in ['min_index', 'max_index']:
+                        aggregate_value = int(aggregate_value)  # Convert index to integer
                 except Exception as e:
                     aggregate_value = 'Nil'
                     print(f"Error processing file {csv_file}: {e}")
