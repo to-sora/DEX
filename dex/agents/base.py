@@ -79,9 +79,11 @@ class BaseAgent(nn.Module):
 
     def _preproc_inputs(self, o, g, dim=0, device=None):
         '''Normalize obs'''
+        # print("-------------------> combiner")
         o_norm = self.o_norm.normalize(o, device=device)
         g_norm = self.g_norm.normalize(g, device=device)
- 
+        # print("-------------------> concating input", o_norm)
+        # print("-------------------> concating input", g_norm)
         if isinstance(o_norm, np.ndarray):
             inputs = np.concatenate([o_norm, g_norm], dim)
             inputs = torch.tensor(inputs, dtype=torch.float32).unsqueeze(0).to(self.device)

@@ -46,3 +46,37 @@ class DoubleCritic(nn.Module):
         # for double q learning
         q1, q2 = self.forward(state, action)
         return torch.min(q1, q2)
+
+
+class CriticLastFrame(nn.Module):
+    def __init__(self, obs_dim, goal_dim, action_dim, hidden_dim=256, time_frame=5):
+        super().__init__()
+
+        self.obs_dim = obs_dim
+        self.goal_dim = goal_dim
+        self.action_dim = action_dim
+        self.hidden_dim = hidden_dim
+        self.time_frame = time_frame
+        self.obs_per_frame = obs_dim // time_frame
+
+        self.q = MLP(
+            in_dim=self.obs_per_frame + goal_dim + action_dim,
+            out_dim=1,
+            hidden_dim=hidden_dim
+        )
+
+    def forward(self, state, action):
+        # Split state into obs and goal
+        obs = state[:, :self.obs_dim]
+        goal = state[:, self.obs_dim:self.obs_dim + self.goal_dim]
+
+        # Extract current observation (first frame before flipping)
+        current_obs = obs[:, :self.obs_per_frame]
+
+        # Concatenate current_obs, goal, and action
+        sa = torch.cat([current_obs, goal, action], dim=-1)
+        
+
+        # Pass through MLP
+        q = self.q(sa)
+        return q

@@ -7,7 +7,9 @@ from .sac import SAC
 from .sqil import SQIL
 from .amp import AMP
 from .awac import AWAC
-
+from .dex_RNN import DEXRNN
+from .dex_GRU import DEXGRU
+from .dex_LSTM import DEXLSTM
 AGENTS = {
     'DDPG': DDPG,
     'DDPGBC': DDPGBC,
@@ -16,7 +18,10 @@ AGENTS = {
     'SAC': SAC,
     'SQIL': SQIL,
     'AMP': AMP,
-    'AWAC': AWAC
+    'AWAC': AWAC,
+    "DEXRNN2": DEXRNN,
+    "DEXGRU" : DEXGRU,
+    "DEXLSTM" : DEXLSTM
 }
 
 
