@@ -1,133 +1,49 @@
-# #!/bin/bash
 
-# # List of all tasks
-# TASKS=(
-#     "NeedleReach-v0"
-#     "GauzeRetrieve-v0"
-#     "NeedlePick-v0"
-#     "PegTransfer-v0"
-#     "NeedleRegrasp-v0"
-#     "BiPegTransfer-v0"
-#     "ECMReach-v0"
-#     "MisOrient-v0"
-#     "StaticTrack-v0"
-#     "ActiveTrack-v0"
-# )
-
-# # List of all agents
-# AGENTS=(
-#     "dex"
-#     "sac"
-#     "ddpg"
-#     "ddpgbc"
-#     "col"
-#     "amp"
-#     "awac"
-#     "sqil"
-# )
-
-# # Create directories
-# mkdir -p .checkpoints
-
-# # Function to check if a combination has been completed
-# is_completed() {
-#     local task=$1
-#     local agent=$2
-#     if [ -f ".checkpoints/${task}_${agent}.done" ]; then
-#         return 0 # True
-#     else
-#         return 1 # False
-#     fi
-# }
-
-# # Function to mark a combination as completed
-# mark_completed() {
-#     local task=$1
-#     local agent=$2
-#     touch ".checkpoints/${task}_${agent}.done"
-# }
-
-# # Train each combination of task and agent sequentially
-# for task in "${TASKS[@]}"; do
-#     for agent in "${AGENTS[@]}"; do
-#         # Skip if this combination was already completed
-#         if is_completed "$task" "$agent"; then
-#             echo "Skipping $task with $agent - already completed"
-#             continue
-#         fi
-
-#         echo "Training $task with $agent..."
-        
-#         # Create log file name
-#         log_file="logs/${task}_${agent}.log"
-        
-#         # Run training (sequential, no background process)
-#         python -m train \
-#             agent=$agent \
-#             task=$task \
-#             use_wb=True \
-#             2>&1 | tee "$log_file"
-            
-#         # Check if training completed successfully
-#         if [ $? -eq 0 ]; then
-#             echo "Successfully completed training $task with $agent"
-#             mark_completed "$task" "$agent"
-#         else
-#             echo "Failed training $task with $agent"
-#             # Optionally exit on failure
-#             # exit 1
-#         fi
-
-#         echo "----------------------------------------"
-#     done
-# done
-
-# echo "All training combinations completed!"
-
-# # Print summary of completed trainings
-# echo "Training Summary:"
-# echo "----------------------------------------"
-# total_combinations=$((${#TASKS[@]} * ${#AGENTS[@]}))
-# completed_count=$(ls .checkpoints/*.done 2>/dev/null | wc -l)
-# echo "Completed: $completed_count/$total_combinations combinations"
-
-# # List incomplete combinations if any exist
-# if [ $completed_count -lt $total_combinations ]; then
-#     echo "Incomplete combinations:"
-#     for task in "${TASKS[@]}"; do
-#         for agent in "${AGENTS[@]}"; do
-#             if ! is_completed "$task" "$agent"; then
-#                 echo "- $task with $agent"
-#             fi
-#         done
-#     done
-# fi 
-
-#!/bin/bash
 
 # List of all tasks
 TASKS=(
-    "NeedleReach-v0"
-    "NeedleReachMem-v0"
-    "GauzeRetrieve-v0"
-    "GauzeRetrieveMem-v0"
-    "NeedlePick-v0"
-    "NeedlePickMem-v0"
-    "PegTransfer-v0"
-    "PegTransferMem-v0"
-    "NeedleRegrasp-v0"
-    "NeedleRegraspMem-v0"
-    "BiPegTransfer-v0"
-    "BiPegTransferMem-v0"
-    "ECMReach-v0"
-    "ECMReachMem-v0"
-    "MisOrient-v0"
-    "MisOrientMem-v0"
-    "StaticTrack-v0"
-    "StaticTrackMem-v0"
-    "ActiveTrack-v0" # No Mem version exists
+     "NeedleReach-v0"
+    # "NeedleReachMem-v0"
+     "GauzeRetrieve-v0"
+    # "GauzeRetrieveMem-v0"
+      "NeedlePick-v0"
+    # "NeedlePickMem-v0"
+      "PegTransfer-v0"
+    # "PegTransferMem-v0"
+      "NeedleRegrasp-v0"
+    # "NeedleRegraspMem-v0"
+      "BiPegTransfer-v0"
+    # "BiPegTransferMem-v0"
+      "ECMReach-v0"
+    # "ECMReachMem-v0"
+      "MisOrient-v0"
+    # "MisOrientMem-v0"
+      "StaticTrack-v0"
+    # "StaticTrackMem-v0"
+    # "ActiveTrack-v0" # No Mem version exists
 )
 
+# TASKS=(
+#     # "NeedleReach-v0"
+#     "NeedleReachMem-v0"
+#     # "GauzeRetrieve-v0"
+#     "GauzeRetrieveMem-v0"
+#     # "NeedlePick-v0"
+#     "NeedlePickMem-v0"
+#     # "PegTransfer-v0"
+#     "PegTransferMem-v0"
+#     # "NeedleRegrasp-v0"
+#     "NeedleRegraspMem-v0"
+#     # "BiPegTransfer-v0"
+#     "BiPegTransferMem-v0"
+#     # "ECMReach-v0"
+#     "ECMReachMem-v0"
+#     # "MisOrient-v0"
+#     "MisOrientMem-v0"
+#     # "StaticTrack-v0"
+#     "StaticTrackMem-v0"
+#     # "ActiveTrack-v0" # No Mem version exists
+# )
 # List of all agents
 AGENTS=(
     "dex"
@@ -138,6 +54,9 @@ AGENTS=(
     "amp"
     "awac"
     "sqil"
+    # "dexrnn2"
+    # "dexgru"
+    # "dexlstm"
 )
 
 # Maximum number of concurrent jobs
@@ -185,7 +104,7 @@ run_training() {
     python -m train \
         agent=$agent \
         task=$task \
-        use_wb=False \
+        use_wb=True \
         2>&1 | tee "$log_file"
 
     # Check if training completed successfully

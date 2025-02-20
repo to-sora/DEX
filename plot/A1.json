@@ -1,0 +1,38 @@
+{
+    "agents": [
+        "DEX",
+        "SAC",
+        "DDPG",
+        "DDPGBC",
+        "CoL",
+        "AMP",
+        "AWAC",
+        "SQIL"
+    ],
+    "tasks": [
+        "NeedleReach-v0",
+        "NeedleReachMem-v0",
+        "GauzeRetrieve-v0",
+        "GauzeRetrieveMem-v0",
+        "NeedlePick-v0",
+        "NeedlePickMem-v0",
+        "PegTransfer-v0",
+        "PegTransferMem-v0",
+        "NeedleRegrasp-v0",
+        "NeedleRegraspMem-v0",
+        "BiPegTransfer-v0",
+        "BiPegTransferMem-v0",
+        "ECMReach-v0",
+        "ECMReachMem-v0",
+        "MisOrient-v0",
+        "MisOrientMem-v0",
+        "StaticTrack-v0",
+        "StaticTrackMem-v0"
+    
+ 
+    ],
+    "mode": "eval",
+    "print_mode": "max",
+    "key_attribute": "episode_reward",
+    "config_path": "d100/s1"
+}

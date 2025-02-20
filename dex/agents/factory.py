@@ -10,6 +10,12 @@ from .awac import AWAC
 from .dex_RNN import DEXRNN
 from .dex_GRU import DEXGRU
 from .dex_LSTM import DEXLSTM
+from .GRU_class import DDPGGRU, DDPGBCGRU, CoLGRU, DEXGRU2, SACGRU, SQILGRU, AMPGRU, AWACGRU
+
+
+
+
+
 AGENTS = {
     'DDPG': DDPG,
     'DDPGBC': DDPGBC,
@@ -21,7 +27,15 @@ AGENTS = {
     'AWAC': AWAC,
     "DEXRNN2": DEXRNN,
     "DEXGRU" : DEXGRU,
-    "DEXLSTM" : DEXLSTM
+    "DEXLSTM" : DEXLSTM,
+    "DDPGGRU": DDPGGRU,
+    "DDPGBCGRU": DDPGBCGRU,
+    "CoLGRU": CoLGRU,
+    "DEXGRU2": DEXGRU2,
+    "SACGRU": SACGRU,
+    "SQILGRU": SQILGRU,
+    "AMPGRU": AMPGRU,
+    "AWACGRU": AWACGRU
 }
 
 

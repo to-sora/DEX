@@ -1,0 +1,10 @@
+Task,DEX,SAC,DDPG,DDPGBC,CoL,AMP,AWAC,SQIL,DEXRNN
+NeedleReach-v0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,Nil
+GauzeRetrieve-v0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,Nil,Nil
+NeedlePick-v0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,Nil
+PegTransfer-v0,0.00,Nil,0.00,0.00,0.00,0.00,0.00,Nil,Nil
+NeedleRegrasp-v0,0.00,0.00,0.00,0.00,0.00,Nil,0.00,Nil,Nil
+BiPegTransfer-v0,Nil,Nil,0.00,Nil,Nil,Nil,Nil,Nil,Nil
+ECMReach-v0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,Nil
+MisOrient-v0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,Nil
+StaticTrack-v0,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,Nil

@@ -23,7 +23,7 @@ dont_save: False
 n_eval_episodes: 20
 
 use_wb: True
-project_name: dex
+project_name: dex_new
 #entity_name: wchen4166-the-chinese-university-of-hong-kong
 entity_name: waitotsang-sora
 # MPI
